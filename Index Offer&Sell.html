@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <title>Estructura Base de Datos offerandsell</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        h2 { color: #2c3e50; }
+        table { border-collapse: collapse; width: 100%; margin-bottom: 40px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #3498db; color: white; }
+        caption { font-weight: bold; font-size: 1.2em; margin-bottom: 8px; }
+    </style>
+</head>
+<body>
+
+    <h1>Estructura de la Base de Datos <em>offerandsell</em></h1>
+
+    <!-- Tabla usuario -->
+    <table>
+        <caption>Tabla: usuario</caption>
+        <thead>
+            <tr>
+                <th>Columna</th>
+                <th>Tipo</th>
+                <th>Restricciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id_usuario</td><td>INT</td><td>PRIMARY KEY, AUTO_INCREMENT, NOT NULL</td></tr>
+            <tr><td>nombre</td><td>VARCHAR(150)</td><td>NOT NULL</td></tr>
+            <tr><td>correo</td><td>VARCHAR(150)</td><td>NOT NULL, UNIQUE</td></tr>
+            <tr><td>telefono</td><td>VARCHAR(20)</td><td></td></tr>
+            <tr><td>password</td><td>VARCHAR(255)</td><td>NOT NULL</td></tr>
+            <tr><td>foto_perfil</td><td>VARCHAR(255)</td><td></td></tr>
+            <tr><td>fecha_registro</td><td>DATETIME</td><td>DEFAULT CURRENT_TIMESTAMP</td></tr>
+        </tbody>
+    </table>
+
+    <!-- Tabla categoria -->
+    <table>
+        <caption>Tabla: categoria</caption>
+        <thead>
+            <tr>
+                <th>Columna</th>
+                <th>Tipo</th>
+                <th>Restricciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id_categoria</td><td>INT</td><td>PRIMARY KEY, AUTO_INCREMENT, NOT NULL</td></tr>
+            <tr><td>nombre</td><td>VARCHAR(100)</td><td>NOT NULL</td></tr>
+        </tbody>
+    </table>
+
+    <!-- Tabla producto -->
+    <table>
+        <caption>Tabla: producto</caption>
+        <thead>
+            <tr>
+                <th>Columna</th>
+                <th>Tipo</th>
+                <th>Restricciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id_producto</td><td>INT</td><td>PRIMARY KEY, AUTO_INCREMENT, NOT NULL</td></tr>
+            <tr><td>id_usuario</td><td>INT</td><td>FOREIGN KEY ? usuario(id_usuario), NOT NULL</td></tr>
+            <tr><td>id_categoria</td><td>INT</td><td>FOREIGN KEY ? categoria(id_categoria), NOT NULL</td></tr>
+            <tr><td>titulo</td><td>VARCHAR(150)</td><td>NOT NULL</td></tr>
+            <tr><td>descripcion</td><td>TEXT</td><td></td></tr>
+            <tr><td>precio</td><td>DECIMAL(10,2)</td><td>NOT NULL</td></tr>
+            <tr><td>estado</td><td>ENUM('nuevo','usado')</td><td>NOT NULL</td></tr>
+            <tr><td>fecha_publicacion</td><td>DATETIME</td><td>DEFAULT CURRENT_TIMESTAMP</td></tr>
+            <tr><td>vendido</td><td>BOOLEAN</td><td>DEFAULT FALSE</td></tr>
+        </tbody>
+    </table>
+
+    <!-- Tabla transaccion -->
+    <table>
+        <caption>Tabla: transaccion</caption>
+        <thead>
+            <tr>
+                <th>Columna</th>
+                <th>Tipo</th>
+                <th>Restricciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>id_transaccion</td><td>INT</td><td>PRIMARY KEY, AUTO_INCREMENT, NOT NULL</td></tr>
+            <tr><td>id_producto</td><td>INT</td><td>FOREIGN KEY ? producto(id_producto), NOT NULL</td></tr>
+            <tr><td>id_comprador</td><td>INT</td><td>FOREIGN KEY ? usuario(id_usuario), NOT NULL</td></tr>
+            <tr><td>id_vendedor</td><td>INT</td><td>FOREIGN KEY ? usuario(id_usuario), NOT NULL</td></tr>
+            <tr><td>id_metodo_pago</td><td>INT</td><td>FOREIGN KEY ? metodo_pago(id_metodo_pago), NOT NULL</td></tr>
+            <tr><td>precio_final</td><td>DECIMAL(10,2)</td><td>NOT NULL</td></tr>
+            <tr><td>fecha_venta</td><td>DATETIME</td><td>DEFAULT CURRENT_TIMESTAMP</td></tr>
+        </tbody>
+    </table>
+
+    <!-- Puedes continuar con las dem?s tablas siguiendo este mismo formato -->
+
+</body>
+</html>
