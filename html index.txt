@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Offer&Sell</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+    <h1>Bienvenido a Offer&Sell</h1>
+    <nav>
+        <a href="/registro">Registrarse</a> |
+        <a href="/login">Iniciar Sesión</a> |
+        <a href="/productos/lista">Ver Productos</a>
+    </nav>
+</body>
+</html>

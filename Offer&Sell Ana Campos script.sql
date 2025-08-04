@@ -1,5 +1,5 @@
 CREATE TABLE usuario (
-  id_usuario INT NOT NULL AUTO_INCREMENT,
+  id_usuario INT NOT NULLAUTO_INCREMENT,
   nombre VARCHAR(150) NOT NULL,
   correo VARCHAR(150) NOT NULL UNIQUE,
   telefono VARCHAR(20),

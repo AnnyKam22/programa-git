@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Lista de Productos - Offer&Sell</title>
+    <link rel="stylesheet" href="/css/estilos.css">
+</head>
+<body>
+    <h2>Lista de Productos</h2>
+    <table border="1">
+        <tr>
+            <th>Título</th>
+            <th>Descripción</th>
+            <th>Precio</th>
+            <th>Estado</th>
+        </tr>
+        <% productos.forEach(producto => { %>
+        <tr>
+            <td><%= producto.titulo %></td>
+            <td><%= producto.descripcion %></td>
+            <td>$<%= producto.precio %></td>
+            <td><%= producto.estado %></td>
+        </tr>
+        <% }) %>
+    </table>
+</body>
+</html>
